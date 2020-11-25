@@ -13,7 +13,12 @@ namespace FantasyBackend.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
+        [Required]
+        public Guid userId { get; set; }
+        [Required]
         public String Name { get; set; }
+
+        [Required]
         public int maxParticipants { get; set; }
     }
 }

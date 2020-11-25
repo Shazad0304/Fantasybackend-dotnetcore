@@ -1,4 +1,5 @@
 ﻿using FantasyBackend.DbContextFantasy;
+using FantasyBackend.Model;
 using FantasyBackend.Repostitory;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,17 @@ namespace FantasyBackend.Services
         public LeagueService(FantasyCon context)
         {
             rp = new LeagueRepo(context);
+        }
+
+        public List<League> getAll(String id)
+        {
+            
+            return this.rp.getAll(Guid.Parse(id));
+        }
+
+        public League add(League l)
+        {
+            return this.rp.addLeague(l);
         }
     }
 }

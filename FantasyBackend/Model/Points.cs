@@ -14,8 +14,11 @@ namespace FantasyBackend.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
+        [Required]
         public Guid PlayerId { get; set; }
+        [Required]
         public Guid leagueId { get; set; }
+        [Required]
         public int points { get; set; }
     }
 }

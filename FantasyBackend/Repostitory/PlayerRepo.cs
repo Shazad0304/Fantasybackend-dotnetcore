@@ -23,6 +23,16 @@ namespace FantasyBackend.Repostitory
             return p;
         }
 
+        public List<Players> getAll()
+        {
+            return this.context.Players.ToList();
+        }
+
+        public List<Players> getPlayersbyTeam(string Team)
+        {
+            return this.context.Players.Where(x => x.Team == Team).ToList();
+        }
+
         public bool isExisted(Players p)
         {
             return !(context.Players.FirstOrDefault(x => x.Name == p.Name && x.Team == p.Team) == null);

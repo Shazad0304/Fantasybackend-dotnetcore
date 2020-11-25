@@ -22,5 +22,16 @@ namespace FantasyBackend.Services
         {
             return rp.isExisted(player) ? null : rp.addPlayer(player);
         }
+
+        public object getPlayerbyteam(string team)
+        {
+            return rp.getPlayersbyTeam(team);
+        }
+
+        public object all()
+        {
+            return this.rp.getAll();
+        }
     }
 }
+

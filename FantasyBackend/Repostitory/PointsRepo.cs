@@ -1,4 +1,5 @@
 ﻿using FantasyBackend.DbContextFantasy;
+using FantasyBackend.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,13 @@ namespace FantasyBackend.Repostitory
         public PointsRepo(FantasyCon context)
         {
             this.context = context;
+        }
+
+        public Points addPoints(Points p)
+        {
+            this.context.Add(p);
+            this.context.SaveChanges();
+            return p;
         }
     }
 }

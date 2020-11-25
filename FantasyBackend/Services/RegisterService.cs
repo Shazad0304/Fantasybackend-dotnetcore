@@ -33,9 +33,8 @@ namespace FantasyBackend.Services
 
         }
 
-        public Dictionary<string, object> Login(Register r)
+        public Register Login(Login r)
         {
-            Dictionary<string, object> resp = new Dictionary<string, object>();
             Register obj = rp.findbyemailandpass(r.Email, r.Password);
             if (obj == null)
             {
@@ -43,8 +42,7 @@ namespace FantasyBackend.Services
             }
             else
             {
-                resp.Add("userId", obj.Id);
-                return resp;
+                return obj;
             }
 
         }
