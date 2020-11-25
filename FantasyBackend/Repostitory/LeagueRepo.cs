@@ -70,7 +70,7 @@ namespace FantasyBackend.Repostitory
                         join players in context.Players
                         on tms.PlayerId equals players.Id
                         join points in context.Points
-                        on players.Id equals points.PlayerId
+                        on new { X1 = players.Id, X2 = id } equals new { X1 = points.PlayerId, X2 = points.leagueId }
                         where jl.LeagueId == id
                         select new
                         {
