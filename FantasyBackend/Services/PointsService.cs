@@ -17,11 +17,15 @@ namespace FantasyBackend.Services
             rp = new PointsRepo(context);
         }
 
-        public List<Points> addBatch(List<Points> p)
+        public List<RequestPoints> addBatch(List<RequestPoints> p)
         {
-            foreach (Points item in p)
+            foreach (RequestPoints item in p)
             {
-                this.rp.addPoints(item);
+                this.rp.addPoints(new Points() {
+                leagueId = Guid.Parse(item.leagueId),
+                PlayerId = Guid.Parse(item.PlayerId),
+                points = item.points
+                });
             }
 
             return p;

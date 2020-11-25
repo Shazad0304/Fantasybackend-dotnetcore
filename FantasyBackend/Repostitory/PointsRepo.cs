@@ -22,5 +22,7 @@ namespace FantasyBackend.Repostitory
             this.context.SaveChanges();
             return p;
         }
+
+
     }
 }

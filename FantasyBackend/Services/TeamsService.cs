@@ -19,6 +19,7 @@ namespace FantasyBackend.Services
 
         public List<UserTeams> addBatch(Guid id,List<String> Players)
         {
+            this.rp.DeleteUserTeam(id);
             List<UserTeams> us = new List<UserTeams>();
             foreach (String item in Players)
             {

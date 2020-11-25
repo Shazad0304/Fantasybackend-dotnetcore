@@ -43,5 +43,15 @@ namespace FantasyBackend.Services
         {
             return this.rp.getmyjoinleagues(Guid.Parse(id));
         }
+
+        public bool Exists(String userid,String leagueid)
+        {
+            return this.rp.Existed(Guid.Parse(userid), Guid.Parse(leagueid));
+        }
+
+        public object getPointsbyLeague(String id)
+        {
+            return this.rp.getLeagueScores(Guid.Parse(id));
+        }
     }
 }

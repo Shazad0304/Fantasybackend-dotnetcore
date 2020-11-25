@@ -28,13 +28,16 @@ namespace FantasyBackend.Controllers
         public object addLeague(League l)
         {
             l.userId = Guid.Parse(getUserId());
-            this.rs.add(l);
-            return Ok(new Response() {Message="League Created",Status="200" });
+            return Ok(this.rs.add(l));
         }
 
         [HttpPost("join/{id}")]
         public object joinLeague(String id)
         {
+            if (this.rs.Exists(getUserId(), id))
+            {
+                return Conflict("Already Joined");
+            }
             return Ok(this.rs.join(getUserId(),id));
         }
 
@@ -44,6 +47,12 @@ namespace FantasyBackend.Controllers
       
          return Ok(this.rs.getAll(getUserId()));
             
+        }
+        
+        [HttpGet("getPoints/{id}")]
+        public object getScoresByLeague(String id)
+        {
+            return Ok(this.rs.getPointsbyLeague(id));
         }
 
         [HttpGet("getleagues")]

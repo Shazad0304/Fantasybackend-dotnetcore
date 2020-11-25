@@ -40,6 +40,16 @@ namespace FantasyBackend.Repostitory
             return uj;
         }
 
+        public bool Existed(Guid userid,Guid leagueId)
+        {
+            if(context.joinLeagues
+                .Where(x => x.UserId == userid && x.LeagueId == leagueId).Count() > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public List<League> getmyjoinleagues(Guid id)
         {
             return (from p in context.joinLeagues
@@ -47,6 +57,37 @@ namespace FantasyBackend.Repostitory
                     on p.LeagueId equals e.Id
                     where p.UserId == id
                     select e).ToList();
+        }
+
+        public object getLeagueScores(Guid id)
+        {
+
+            object a = (from jl in context.joinLeagues
+                        join user in context.Register
+                        on jl.UserId equals user.Id
+                        join tms in context.UserTeams
+                        on user.Id equals tms.userId
+                        join players in context.Players
+                        on tms.PlayerId equals players.Id
+                        join points in context.Points
+                        on players.Id equals points.PlayerId
+                        where jl.LeagueId == id
+                        select new
+                        {
+                            User = user.FullName,
+                            PlayerName = players.Name,
+                            point = points.points
+                        }
+                        )
+                        .ToList()
+                        .GroupBy(r => r.User)
+                        .Select(s => new
+                        {
+                            userName = s.First().User,
+                            totalPoints = s.Sum(p => p.point)
+                        });
+
+            return a;
         }
     }
 }

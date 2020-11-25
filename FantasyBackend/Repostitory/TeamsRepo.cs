@@ -18,10 +18,15 @@ namespace FantasyBackend.Repostitory
 
         public UserTeams AddTeam(UserTeams t)
         {
-            context.UserTeams.Remove(context.UserTeams.Single(x => x.userId == t.userId));
             context.UserTeams.Add(t);
             context.SaveChanges();
             return t;
+        }
+
+        public void DeleteUserTeam(Guid id)
+        {
+            context.UserTeams.RemoveRange(context.UserTeams.Where(x => x.userId == id));
+            context.SaveChanges();
         }
 
         public List<Players> getmyTeam(Guid id)
