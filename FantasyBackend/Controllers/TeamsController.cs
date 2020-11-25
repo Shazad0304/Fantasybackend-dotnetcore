@@ -34,6 +34,12 @@ namespace FantasyBackend.Controllers
             return this.rs.addBatch(Guid.Parse(getUserId()),playersid);
         }
 
+        [HttpGet("get")]
+        public object getMyTeam()
+        {
+            return this.rs.myTeam(getUserId());
+        }
+
         public string getUserId()
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;

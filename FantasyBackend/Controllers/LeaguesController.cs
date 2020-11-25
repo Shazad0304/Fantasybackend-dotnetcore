@@ -32,12 +32,34 @@ namespace FantasyBackend.Controllers
             return Ok(new Response() {Message="League Created",Status="200" });
         }
 
-        [HttpGet("getAll")]
+        [HttpPost("join/{id}")]
+        public object joinLeague(String id)
+        {
+            return Ok(this.rs.join(getUserId(),id));
+        }
+
+        [HttpGet("getmyleagues")]
         public object getLeague()
         {
       
          return Ok(this.rs.getAll(getUserId()));
             
+        }
+
+        [HttpGet("getleagues")]
+        public object getAllLeague()
+        {
+
+            return Ok(this.rs.get());
+
+        }
+
+        [HttpGet("getjoinedleagues")]
+        public object getjoinedLeague()
+        {
+
+            return Ok(this.rs.getjoinedleagues(getUserId()));
+
         }
 
         [NonAction]

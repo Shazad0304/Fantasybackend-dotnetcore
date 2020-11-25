@@ -20,5 +20,6 @@ namespace FantasyBackend.DbContextFantasy
         public DbSet<Register> Register { get; set; }
         public DbSet<UserTeams> UserTeams { get; set; }
 
+        public DbSet<UserJoinLeagues> joinLeagues { get; set; }
     }
 }

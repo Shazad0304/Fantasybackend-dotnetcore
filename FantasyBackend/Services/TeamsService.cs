@@ -30,5 +30,10 @@ namespace FantasyBackend.Services
             }
             return us;
         }
+
+        public List<Players> myTeam(String id)
+        {
+            return this.rp.getmyTeam(Guid.Parse(id));
+        }
     }
 }
