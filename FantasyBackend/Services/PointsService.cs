@@ -10,25 +10,25 @@ namespace FantasyBackend.Services
 {
     public class PointsService
     {
-        PointsRepo rp;
+        PointsRepository rp;
 
         public PointsService(FantasyCon context)
         {
-            rp = new PointsRepo(context);
+            rp = new PointsRepository(context);
         }
 
-        public List<RequestPoints> addBatch(List<RequestPoints> p)
+        public List<RequestPoints> AddBatch(List<RequestPoints> players)
         {
-            foreach (RequestPoints item in p)
+            foreach (RequestPoints player in players)
             {
-                this.rp.addPoints(new Points() {
-                leagueId = Guid.Parse(item.leagueId),
-                PlayerId = Guid.Parse(item.PlayerId),
-                points = item.points
+                this.rp.AddPoints(new Points() {
+                leagueId = Guid.Parse(player.leagueId),
+                PlayerId = Guid.Parse(player.PlayerId),
+                points = player.points
                 });
             }
 
-            return p;
+            return players;
         }
     }
 }

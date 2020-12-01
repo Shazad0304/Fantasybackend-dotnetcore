@@ -17,7 +17,7 @@ namespace FantasyBackend.Services
             rp = new RegisterRepository(context);
         }
 
-        public Dictionary<string, object> add(Register r)
+        public Dictionary<string, object> Add(Register r)
         {
             Dictionary<string, object> resp = new Dictionary<string, object>();
             if (rp.Existed(r.Email))
@@ -27,7 +27,7 @@ namespace FantasyBackend.Services
             }
             else
             {
-                resp.Add("success", rp.insert(r));
+                resp.Add("success", rp.Insert(r));
                 return resp;
             }
 
@@ -35,7 +35,7 @@ namespace FantasyBackend.Services
 
         public Register Login(Login r)
         {
-            Register obj = rp.findbyemailandpass(r.Email, r.Password);
+            Register obj = rp.FindByEmailandPass(r.Email, r.Password);
             if (obj == null)
             {
                 return null;

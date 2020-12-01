@@ -25,22 +25,22 @@ namespace FantasyBackend.Controllers
 
 
         [HttpPost("add")]
-        public object addPlayer([FromBody] Players ps)
+        public object AddPlayer([FromBody] Players ps)
         {
             object resp = this.ps.AddPlayer(ps);
             return resp == null ? Conflict() : resp;
         }
 
         [HttpGet("getbyteam/{team}")]
-        public object getplayerbyteam(string team)
+        public object GetPlayerByTeam(string team)
         {
-            return this.ps.getPlayerbyteam(team);
+            return this.ps.GetPlayerByTeam(team);
         }
 
         [HttpGet("getall")]
-        public object getplayers()
+        public object GetPlayers()
         {
-            return this.ps.all();
+            return this.ps.All();
         }
     }
 }

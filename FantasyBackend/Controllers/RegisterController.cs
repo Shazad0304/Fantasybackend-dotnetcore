@@ -31,9 +31,9 @@ namespace FantasyBackend.Controllers
         }
         
         [HttpPost("add")]
-        public Dictionary<string, object> addUser([FromBody] Register payload)
+        public Dictionary<string, object> AddUser([FromBody] Register payload)
         {
-            return this.rs.add(payload);
+            return this.rs.Add(payload);
         }
         
         [HttpPost("login")]

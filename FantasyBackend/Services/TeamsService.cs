@@ -10,14 +10,14 @@ namespace FantasyBackend.Services
 {
     public class TeamsService
     {
-        TeamsRepo rp;
+        TeamsRepository rp;
 
         public TeamsService(FantasyCon context)
         {
-            rp = new TeamsRepo(context);
+            rp = new TeamsRepository(context);
         }
 
-        public List<UserTeams> addBatch(Guid id,List<String> Players)
+        public List<UserTeams> AddBatch(Guid id,List<String> Players)
         {
             this.rp.DeleteUserTeam(id);
             List<UserTeams> us = new List<UserTeams>();
@@ -32,7 +32,7 @@ namespace FantasyBackend.Services
             return us;
         }
 
-        public List<Players> myTeam(String id)
+        public List<Players> MyTeam(String id)
         {
             return this.rp.getmyTeam(Guid.Parse(id));
         }

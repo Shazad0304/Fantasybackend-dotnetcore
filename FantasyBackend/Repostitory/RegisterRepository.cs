@@ -17,14 +17,14 @@ namespace FantasyBackend.Repostitory
         }
 
 
-        public Register insert(Register r)
+        public Register Insert(Register user)
         {
-            context.Register.Add(r);
+            context.Register.Add(user);
             context.SaveChanges();
-            return r;
+            return user;
         }
 
-        public Register findbyemailandpass(string email,string pass)
+        public Register FindByEmailandPass(string email,string pass)
         {
             return this.context.Register.FirstOrDefault(x => x.Email == email && x.Password == pass);
         }

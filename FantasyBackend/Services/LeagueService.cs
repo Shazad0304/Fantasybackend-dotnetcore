@@ -10,38 +10,38 @@ namespace FantasyBackend.Services
 {
     public class LeagueService
     {
-        LeagueRepo rp;
+        LeagueRepository rp;
 
         public LeagueService(FantasyCon context)
         {
-            rp = new LeagueRepo(context);
+            rp = new LeagueRepository(context);
         }
 
-        public List<League> getAll(String id)
+        public List<League> GetAll(String id)
         {
             
-            return this.rp.getAll(Guid.Parse(id));
+            return this.rp.GetAll(Guid.Parse(id));
         }
 
-        public object get()
+        public object Get()
         {
-            return this.rp.getAllWithoutId();
+            return this.rp.GetAllWithoutId();
         }
 
-        public League add(League l)
+        public League Add(League l)
         {
-            return this.rp.addLeague(l);
+            return this.rp.AddLeague(l);
         }
 
-        public object join(String userid, String Leagueid)
+        public object Join(String userid, String Leagueid)
         {
-            return this.rp.joinleague(new UserJoinLeagues() 
+            return this.rp.JoinLeague(new UserJoinLeagues() 
             {UserId=Guid.Parse(userid),LeagueId= Guid.Parse(Leagueid) });
         }
 
-        public object getjoinedleagues(String id)
+        public object GetJoinedLeagues(String id)
         {
-            return this.rp.getmyjoinleagues(Guid.Parse(id));
+            return this.rp.GetMyJoinLeagues(Guid.Parse(id));
         }
 
         public bool Exists(String userid,String leagueid)
@@ -49,9 +49,9 @@ namespace FantasyBackend.Services
             return this.rp.Existed(Guid.Parse(userid), Guid.Parse(leagueid));
         }
 
-        public object getPointsbyLeague(String id)
+        public object GetPointsByLeague(String id)
         {
-            return this.rp.getLeagueScores(Guid.Parse(id));
+            return this.rp.GetLeagueScores(Guid.Parse(id));
         }
     }
 }

@@ -25,22 +25,22 @@ namespace FantasyBackend.Controllers
         }
 
         [HttpPost("addAll")]
-        public object addBatch([FromBody] List<String> playersid)
+        public object AddBatch([FromBody] List<String> playersid)
         {
             if (playersid.Count != 11)
             {
                 return BadRequest("Players must be 11");
             }
-            return this.rs.addBatch(Guid.Parse(getUserId()),playersid);
+            return this.rs.AddBatch(Guid.Parse(GetUserId()),playersid);
         }
 
         [HttpGet("get")]
-        public object getMyTeam()
+        public object GetMyTeam()
         {
-            return this.rs.myTeam(getUserId());
+            return this.rs.MyTeam(GetUserId());
         }
 
-        public string getUserId()
+        public string GetUserId()
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;
             if (identity != null)

@@ -24,9 +24,9 @@ namespace FantasyBackend.Controllers
         }
 
         [HttpPost("addBatch")]
-        public object addBatch([FromBody] List<RequestPoints> pay)
+        public object AddBatch([FromBody] List<RequestPoints> pay)
         {
-            return this.rs.addBatch(pay);
+            return this.rs.AddBatch(pay);
         }
     }
 }

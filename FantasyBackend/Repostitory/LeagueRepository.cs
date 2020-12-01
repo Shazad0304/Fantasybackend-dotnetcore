@@ -7,33 +7,33 @@ using System.Threading.Tasks;
 
 namespace FantasyBackend.Repostitory
 {
-    public class LeagueRepo
+    public class LeagueRepository
     {
         FantasyCon context;
 
-        public LeagueRepo(FantasyCon context)
+        public LeagueRepository(FantasyCon context)
         {
             this.context = context;
         }
 
-        public List<League> getAll(Guid id)
+        public List<League> GetAll(Guid id)
         {
             return this.context.Leagues.Where(x => x.userId == id).ToList();
         }
 
-        public List<League> getAllWithoutId()
+        public List<League> GetAllWithoutId()
         {
             return this.context.Leagues.ToList();
         }
 
-        public League addLeague(League l)
+        public League AddLeague(League league)
         {
-            this.context.Leagues.Add(l);
+            this.context.Leagues.Add(league);
             this.context.SaveChanges();
-            return l;
+            return league;
         }
 
-        public UserJoinLeagues joinleague(UserJoinLeagues uj)
+        public UserJoinLeagues JoinLeague(UserJoinLeagues uj)
         {
             this.context.joinLeagues.Add(uj);
             this.context.SaveChanges();
@@ -50,7 +50,7 @@ namespace FantasyBackend.Repostitory
             return false;
         }
 
-        public List<League> getmyjoinleagues(Guid id)
+        public List<League> GetMyJoinLeagues(Guid id)
         {
             return (from p in context.joinLeagues
                     join e in context.Leagues
@@ -59,10 +59,10 @@ namespace FantasyBackend.Repostitory
                     select e).ToList();
         }
 
-        public object getLeagueScores(Guid id)
+        public object GetLeagueScores(Guid id)
         {
 
-            object a = (from jl in context.joinLeagues
+            object score = (from jl in context.joinLeagues
                         join user in context.Register
                         on jl.UserId equals user.Id
                         join tms in context.UserTeams
@@ -87,7 +87,7 @@ namespace FantasyBackend.Repostitory
                             totalPoints = s.Sum(p => p.point)
                         });
 
-            return a;
+            return score;
         }
     }
 }

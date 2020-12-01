@@ -25,54 +25,54 @@ namespace FantasyBackend.Controllers
         }
 
         [HttpPost("add")]
-        public object addLeague(League l)
+        public object AddLeague(League l)
         {
-            l.userId = Guid.Parse(getUserId());
-            return Ok(this.rs.add(l));
+            l.userId = Guid.Parse(GetUserId());
+            return Ok(this.rs.Add(l));
         }
 
         [HttpPost("join/{id}")]
-        public object joinLeague(String id)
+        public object JoinLeague(String id)
         {
-            if (this.rs.Exists(getUserId(), id))
+            if (this.rs.Exists(GetUserId(), id))
             {
                 return Conflict("Already Joined");
             }
-            return Ok(this.rs.join(getUserId(),id));
+            return Ok(this.rs.Join(GetUserId(),id));
         }
 
         [HttpGet("getmyleagues")]
-        public object getLeague()
+        public object GetLeague()
         {
       
-         return Ok(this.rs.getAll(getUserId()));
+         return Ok(this.rs.GetAll(GetUserId()));
             
         }
         
         [HttpGet("getPoints/{id}")]
-        public object getScoresByLeague(String id)
+        public object GetScoresByLeague(String id)
         {
-            return Ok(this.rs.getPointsbyLeague(id));
+            return Ok(this.rs.GetPointsByLeague(id));
         }
 
         [HttpGet("getleagues")]
-        public object getAllLeague()
+        public object GetAllLeague()
         {
 
-            return Ok(this.rs.get());
+            return Ok(this.rs.Get());
 
         }
 
         [HttpGet("getjoinedleagues")]
-        public object getjoinedLeague()
+        public object GetJoinedLeague()
         {
 
-            return Ok(this.rs.getjoinedleagues(getUserId()));
+            return Ok(this.rs.GetJoinedLeagues(GetUserId()));
 
         }
 
         [NonAction]
-        public string getUserId()
+        public string GetUserId()
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;
             if (identity != null)

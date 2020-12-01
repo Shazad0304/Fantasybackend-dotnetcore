@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace FantasyBackend.Repostitory
 {
-    public class TeamsRepo
+    public class TeamsRepository
     {
         FantasyCon context;
 
-        public TeamsRepo(FantasyCon context)
+        public TeamsRepository(FantasyCon context)
         {
             this.context = context;
         }
 
-        public UserTeams AddTeam(UserTeams t)
+        public UserTeams AddTeam(UserTeams team)
         {
-            context.UserTeams.Add(t);
+            context.UserTeams.Add(team);
             context.SaveChanges();
-            return t;
+            return team;
         }
 
         public void DeleteUserTeam(Guid id)

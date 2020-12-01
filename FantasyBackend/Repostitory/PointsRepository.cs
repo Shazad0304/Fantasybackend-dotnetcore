@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace FantasyBackend.Repostitory
 {
-    public class PointsRepo
+    public class PointsRepository
     {
         FantasyCon context;
 
-        public PointsRepo(FantasyCon context)
+        public PointsRepository(FantasyCon context)
         {
             this.context = context;
         }
 
-        public Points addPoints(Points p)
+        public Points AddPoints(Points point)
         {
-            this.context.Add(p);
+            this.context.Add(point);
             this.context.SaveChanges();
-            return p;
+            return point;
         }
 
 

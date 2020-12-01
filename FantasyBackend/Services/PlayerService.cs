@@ -10,27 +10,27 @@ namespace FantasyBackend.Services
 {
     public class PlayerService
     {
-        PlayerRepo rp;
+        PlayerRepository rp;
 
         public PlayerService(FantasyCon context)
         {
-            rp = new PlayerRepo(context);
+            rp = new PlayerRepository(context);
         }
 
 
         public object AddPlayer(Players player)
         {
-            return rp.isExisted(player) ? null : rp.addPlayer(player);
+            return rp.IsExisted(player) ? null : rp.AddPlayer(player);
         }
 
-        public object getPlayerbyteam(string team)
+        public object GetPlayerByTeam(string team)
         {
-            return rp.getPlayersbyTeam(team);
+            return rp.GetPlayersByTeam(team);
         }
 
-        public object all()
+        public object All()
         {
-            return this.rp.getAll();
+            return this.rp.GetAll();
         }
     }
 }
